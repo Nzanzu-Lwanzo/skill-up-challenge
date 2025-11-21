@@ -92,7 +92,7 @@ grid.addEventListener("click", function (event) {
     return;
   }
 
-  if (previousCard.imageURL !== image.src) {
+  if (previousCard && previousCard.imageURL !== image.src) {
     // Hide both cards
     previousCard.image.classList.remove("show");
     let timeoutID = setTimeout(() => {
@@ -107,6 +107,7 @@ grid.addEventListener("click", function (event) {
 
     // Add to the revealed cards array
     countRevealed++;
+    incrementPoints();
   }
 
   previousCard = undefined;
@@ -152,5 +153,14 @@ function switchPlayer() {
   } else {
     currentPlayer = players[0];
     currentPlayerElt.innerHTML = currentPlayer.id;
+  }
+}
+
+function incrementPoints() {
+  currentPlayer.points = currentPlayer.points + 1;
+  if (currentPlayer.id === 1) {
+    playerOneElt.innerHTML = currentPlayer.points;
+  } else {
+    playerTwoElt.innerHTML = currentPlayer.points;
   }
 }
