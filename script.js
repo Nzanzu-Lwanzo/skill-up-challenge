@@ -49,7 +49,8 @@ const writersArray = shuffleArray([
   "https://media.gettyimages.com/id/811935914/fr/photo/portrait-de-femmes-en-robes-traditionnelles-cubaines.jpg?s=612x612&w=0&k=20&c=wv4KdaQH5OJ_NTqK_4aEk7hK-UU1CJC87IKwws86rwQ=",
 ]);
 
-const revealedCards = [];
+let countRevealed = 0;
+let previousCard = undefined;
 
 const grid = document.getElementById("grid");
 
@@ -62,32 +63,39 @@ cards.forEach((card, idx) => {
 grid.addEventListener("click", function (event) {
   let element = getElement(event);
   if (!element) return;
-  const cardData = element.children[0];
+  const image = element.children[0];
+  image.classList.add("show");
+
+  const currentCard = {
+    imageURL: image.src,
+    element: element,
+    image: image,
+  };
 
   // Reveal the card
-  cardData.classList.add("show");
-  const imageURL = cardData.src;
-
-  // If there's already this imageURL, hide cards
-  if (
-    revealedCards.length > 0 &&
-    revealedCards.some((card) => card.imageURL === imageURL)
-  ) {
-    revealedCards.forEach((card) => {
-      if (card.imageURL === imageURL) {
-        card.element.classList.add("hide");
-      }
-    });
-    element.classList.add("hide");
+  if (!previousCard) {
+    previousCard = currentCard;
+    return;
   }
 
-  // Add to the revealed cards array
-  revealedCards.push({
-    imageURL: cardData.src,
-    element: element,
-  });
+  if (previousCard.imageURL !== image.src) {
+    // Hide both cards
+    previousCard.image.classList.remove("show");
+    let timeoutID = setTimeout(() => {
+      image.classList.remove("show");
+      clearTimeout(timeoutID);
+    }, 500);
+  } else {
+    // Show both cards
+    previousCard.element.classList.add("show");
+    element.classList.add("show");
 
-  if (revealedCards.length === cards.length) {
+    // Add to the revealed cards array
+    countRevealed++;
+  }
+
+  previousCard = undefined;
+  if (countRevealed >= cards.length / 2) {
     wonGame();
   }
 });
