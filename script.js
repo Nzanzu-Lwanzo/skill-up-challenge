@@ -13,7 +13,7 @@ let currentPlayer = players[0];
 currentPlayerElt.innerHTML = currentPlayer.id;
 
 // Timer
-let totalSeconds = 60;
+let totalSeconds = 120;
 const timerSeconds = document.getElementById("timer-seconds");
 timerSeconds.innerHTML = totalSeconds;
 let intervalID = setInterval(() => {
