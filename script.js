@@ -1,3 +1,17 @@
+// PLAYERS
+const players = [
+  { id: 1, points: 0 },
+  { id: 2, points: 0 },
+];
+const playerOneElt = document.getElementById("player-1");
+playerOneElt.innerHTML = players[0].points;
+const playerTwoElt = document.getElementById("player-2");
+playerTwoElt.innerHTML = players[1].points;
+
+let currentPlayerElt = document.getElementById("current-player");
+let currentPlayer = players[0];
+currentPlayerElt.innerHTML = currentPlayer.id;
+
 // Timer
 let totalSeconds = 60;
 const timerSeconds = document.getElementById("timer-seconds");
@@ -83,6 +97,7 @@ grid.addEventListener("click", function (event) {
     previousCard.image.classList.remove("show");
     let timeoutID = setTimeout(() => {
       image.classList.remove("show");
+      switchPlayer();
       clearTimeout(timeoutID);
     }, 500);
   } else {
@@ -128,4 +143,14 @@ function wonGame() {
   clearInterval(intervalID);
   timerSeconds.style.color = "lightgreen";
   timerSeconds.innerHTML = "YOU WON";
+}
+
+function switchPlayer() {
+  if (currentPlayer.id === 1) {
+    currentPlayer = players[1];
+    currentPlayerElt.innerHTML = currentPlayer.id;
+  } else {
+    currentPlayer = players[0];
+    currentPlayerElt.innerHTML = currentPlayer.id;
+  }
 }
