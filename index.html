@@ -12,12 +12,24 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/style.css" />
-    <script src="/script.js" defer></script>
+    <script src="script.js" type="module" defer></script>
     <title>MEMORY GAME</title>
   </head>
   <body class="center">
-    <div id="timer" class="center">
-      <span class="seconds" id="timer-seconds"></span>
+    <div class="down-bard">
+      <div id="timer" class="down-bard-card center">
+        <span class="seconds" id="timer-seconds"></span>
+      </div>
+      <div class="down-bard-card center">
+        <p>
+          JOUEUR
+          <span id="current-player">1</span>
+        </p>
+      </div>
+      <div class="down-bard-card center">
+        <p>JOUEUR 1 : <span class="coun-goals" id="player-1">0</span></p>
+        <p>JOUEUR 2 : <span class="coun-goals" id="player-2">0</span></p>
+      </div>
     </div>
     <div class="grid" id="grid">
       <div class="grid-card center" id="grid-card-1">

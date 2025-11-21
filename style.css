@@ -79,11 +79,20 @@ body {
   display: block;
 }
 
-#timer {
+.down-bard {
   position: fixed;
-  left: 2rem;
-  bottom: 2rem;
-  width: 150px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 4;
+}
+
+.down-bard-card {
   height: 100px;
   border-radius: 4px;
   backdrop-filter: blur(4px);
@@ -92,4 +101,10 @@ body {
   font-size: 2rem;
   color: white;
   text-align: center;
+  min-width: 200px;
+  width: fit-content;
+}
+
+#timer {
+  width: 150px;
 }
