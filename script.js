@@ -70,7 +70,7 @@ grid.addEventListener("click", function (event) {
 
   // If there's already this imageURL, hide cards
   if (
-    revealedCards.length > 1 &&
+    revealedCards.length > 0 &&
     revealedCards.some((card) => card.imageURL === imageURL)
   ) {
     revealedCards.forEach((card) => {
