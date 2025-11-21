@@ -1,7 +1,7 @@
 // Timer
 let totalSeconds = 60;
 const timerSeconds = document.getElementById("timer-seconds");
-totalSeconds.innerHTML = totalSeconds;
+timerSeconds.innerHTML = totalSeconds;
 let intervalID = setInterval(() => {
   totalSeconds--;
   timerSeconds.innerHTML = totalSeconds;
@@ -107,8 +107,8 @@ function getElement(event) {
   ) {
     return event.target;
   } else if (
-    (event.target.nodeName =
-      "SPAN" && event.target.className.includes("data-to-gues"))
+    event.target.nodeName == "IMG" &&
+    event.target.className.includes("data-to-gues")
   ) {
     return event.target.closest(".grid-card");
   } else {
