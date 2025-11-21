@@ -33,7 +33,7 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   padding: 1rem;
   background-color: black;
@@ -107,4 +107,23 @@ body {
 
 #timer {
   width: 150px;
+}
+
+
+@media only all and (max-width:1300px) {
+  .grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+@media only all and (max-width:600px) {
+  .grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media only all and (max-width:375px) {
+  .grid {
+    grid-template-columns: auto;
+  }
 }
